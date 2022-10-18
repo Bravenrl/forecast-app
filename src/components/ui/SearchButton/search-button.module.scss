@@ -1,0 +1,21 @@
+@import '/src/assets/style/vars.scss';
+
+.button {
+    display: block;
+    height: 100%;
+    padding: 0 2em;
+    box-shadow: $shadow;
+    color: white;
+    background-color: rgb(0, 132, 255);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        box-shadow: none;
+    }
+}

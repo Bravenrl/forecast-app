@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useJsApiLoader } from '@react-google-maps/api';
+import './App.scss';
+import Autocomplete from './components/autocomplete/autocomplete';
+import SearchButton from './components/ui/SearchButton/search-button';
+import AutocompleteWrap from './components/wrappers/autocomplete-wrap/autocomplete-wrap';
 
-function App() {
+export const googleMapsApiKey = process.env.REACT_APP_API_KEY ?? '';
+
+function App(): JSX.Element {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey,
+    libraries: ['places'],
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <AutocompleteWrap>
+        <Autocomplete isLoaded={isLoaded} />
+        <SearchButton />
+      </AutocompleteWrap>
+      {/* <LangDropdown /> */}
+      {/* <CityForm />
+      <Table /> */}
     </div>
   );
 }
