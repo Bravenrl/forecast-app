@@ -1,0 +1,7 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 360px);
+  justify-content: space-around;
+  flex-flow: wrap;
+  row-gap: 1em;
+}

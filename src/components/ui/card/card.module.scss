@@ -1,0 +1,8 @@
+@import '/src/assets/style/vars.scss';
+
+.card {
+    width: 360px;
+    flex: 0 0 auto;
+    border-color: $shadow-gray;
+    box-shadow: $shadow;
+}

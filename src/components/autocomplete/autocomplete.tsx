@@ -1,10 +1,9 @@
 import { ChangeEvent, useEffect } from 'react';
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
+import usePlacesAutocomplete from 'use-places-autocomplete';
+import { City } from '../../assets/types-data';
 import List from '../ui/list/list';
-import ListItem from '../ui/list/list-item/list-item';
+import ListItemFetch from '../ui/list/list-item-fetch/list-item-fetch';
+
 import styles from './autocomplete.module.scss';
 
 type PlacesAutocompleteProps = {
@@ -24,7 +23,8 @@ const PlacesAutocomplete = ({
   } = usePlacesAutocomplete({
     initOnMount: false,
     requestOptions: {
-      language: 'us',
+      types: ['(cities)'],
+      language: 'en',
     },
     debounce: 300,
   });
@@ -33,17 +33,10 @@ const PlacesAutocomplete = ({
     setValue(e.target.value);
   };
 
-  const handleSelect =
-    ({ description }: google.maps.places.AutocompletePrediction) =>
-    () => {
-      setValue(description, false);
-      clearSuggestions();
-
-      getGeocode({ address: description }).then((results) => {
-        const { lat, lng } = getLatLng(results[0]);
-        console.log('📍 Coordinates: ', { lat, lng });
-      });
-    };
+  const handleSelect = (city: City) => {
+    setValue(`${city.name} | ${city.country}`, false);
+    clearSuggestions();
+  };
 
   useEffect(() => {
     if (isLoaded) {
@@ -52,10 +45,7 @@ const PlacesAutocomplete = ({
   }, [init, isLoaded]);
 
   return (
-    <div
-      className={styles.container}
-      // ref={ref}
-    >
+    <div className={styles.container}>
       <input
         value={value}
         onChange={handleInput}
@@ -65,15 +55,12 @@ const PlacesAutocomplete = ({
       {status === 'OK' && (
         <List>
           {data.map((suggestion) => {
-            const {
-              place_id,
-              structured_formatting: { main_text },
-            } = suggestion;
-
             return (
-              <ListItem key={place_id} handleClick={handleSelect(suggestion)}>
-                {main_text}
-              </ListItem>
+              <ListItemFetch
+                key={suggestion.place_id}
+                handleClick={handleSelect}
+                suggestion={suggestion}
+              />
             );
           })}
         </List>

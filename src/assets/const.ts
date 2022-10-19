@@ -5,4 +5,4 @@ export const Langs = {
 }
 
 
-export const maxAutocomplete = 5;
+export const maxAutocomplete = 3;

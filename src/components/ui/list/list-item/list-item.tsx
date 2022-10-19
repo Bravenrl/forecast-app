@@ -1,14 +1,19 @@
-type ListItemProps = {
-  children: string;
+import { ReactNode } from 'react';
+
+type ListItemFetchProps = {
+  children: ReactNode;
   handleClick: () => void;
 };
 
-function ListItem({ children, handleClick }: ListItemProps): JSX.Element {
+function ListItemFetch({
+  children,
+  handleClick,
+}: ListItemFetchProps): JSX.Element | null {
   return (
-    <li onClick={handleClick}>
+    <li tabIndex={0} onClick={handleClick}>
       {children}
     </li>
   );
 }
 
-export default ListItem;
+export default ListItemFetch;
