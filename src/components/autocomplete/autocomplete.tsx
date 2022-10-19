@@ -1,10 +1,12 @@
-import { ChangeEvent, useEffect } from 'react';
 import usePlacesAutocomplete from 'use-places-autocomplete';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { City } from '../../assets/types-data';
 import List from '../ui/list/list';
 import ListItemFetch from '../ui/list/list-item-fetch/list-item-fetch';
-
+import SearchButton from '../ui/search-button/search-button';
 import styles from './autocomplete.module.scss';
+import { useDispatch } from 'react-redux';
+import { addCity } from '../../store/app-slice/app-slice';
 
 type PlacesAutocompleteProps = {
   isLoaded: boolean;
@@ -13,6 +15,9 @@ type PlacesAutocompleteProps = {
 const PlacesAutocomplete = ({
   isLoaded,
 }: PlacesAutocompleteProps): JSX.Element => {
+  const dispatch = useDispatch();
+  const [currentCity, setCurrentCity] = useState<City | null>(null);
+
   const {
     ready,
     value,
@@ -31,11 +36,21 @@ const PlacesAutocomplete = ({
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+    setCurrentCity(null);
   };
 
   const handleSelect = (city: City) => {
     setValue(`${city.name} | ${city.country}`, false);
+    setCurrentCity(city);
     clearSuggestions();
+  };
+
+  const submitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+    console.log('object');
+    e.preventDefault();
+    if (currentCity) {
+      dispatch(addCity(currentCity));
+    }
   };
 
   useEffect(() => {
@@ -45,27 +60,30 @@ const PlacesAutocomplete = ({
   }, [init, isLoaded]);
 
   return (
-    <div className={styles.container}>
-      <input
-        value={value}
-        onChange={handleInput}
-        disabled={!ready}
-        placeholder='Select city'
-      />
-      {status === 'OK' && (
-        <List>
-          {data.map((suggestion) => {
-            return (
-              <ListItemFetch
-                key={suggestion.place_id}
-                handleClick={handleSelect}
-                suggestion={suggestion}
-              />
-            );
-          })}
-        </List>
-      )}
-    </div>
+    <form onSubmit={submitHandler} className={styles.form}>
+      <div className={styles.container}>
+        <input
+          value={value}
+          onChange={handleInput}
+          disabled={!ready}
+          placeholder='Choose city from list'
+        />
+        {status === 'OK' && (
+          <List>
+            {data.map((suggestion) => {
+              return (
+                <ListItemFetch
+                  key={suggestion.place_id}
+                  handleClick={handleSelect}
+                  suggestion={suggestion}
+                />
+              );
+            })}
+          </List>
+        )}
+      </div>
+      <SearchButton type={'submit'} disabled={!currentCity} />
+    </form>
   );
 };
 

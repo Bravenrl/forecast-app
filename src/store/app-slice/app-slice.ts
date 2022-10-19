@@ -38,4 +38,4 @@ export const appSlice = createSlice({
   },
 });
 
-export const { reducer: appReducer, actions: appActions } = appSlice;
+export const { reducer: appReducer, actions: {changeCityMetric, changeLang, addCity} } = appSlice;

@@ -1,9 +1,16 @@
 import styles from './search-button.module.scss';
 
-type SearchButtonProps = {};
+type SearchButtonProps = {
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+};
 
-function SearchButton({}: SearchButtonProps): JSX.Element {
-  return <button className={styles.button}>add</button>;
+function SearchButton({ type, disabled }: SearchButtonProps): JSX.Element {
+  return (
+    <button disabled={disabled} type={type} className={styles.button}>
+      add
+    </button>
+  );
 }
 
 export default SearchButton;

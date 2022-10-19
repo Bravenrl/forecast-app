@@ -1,12 +1,16 @@
-import { ReactNode } from 'react';
+
+import Autocomplete from '../../autocomplete/autocomplete';
 import styles from './autocomplete-wrap.module.scss';
 
 type AutocompleteWrapProps = {
-  children: ReactNode[];
+  isLoaded: boolean;
 };
 
-function AutocompleteWrap({ children }: AutocompleteWrapProps): JSX.Element {
-  return <div className={styles.wrapper}>{children}</div>;
+function AutocompleteWrap({ isLoaded }: AutocompleteWrapProps): JSX.Element {
+  return <div className={styles.wrapper}>
+    <Autocomplete isLoaded={isLoaded} />
+        
+  </div>;
 }
 
 export default AutocompleteWrap;

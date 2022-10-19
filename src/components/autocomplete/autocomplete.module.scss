@@ -1,21 +1,30 @@
 @import '/src/assets/style/vars.scss';
 
-.container {
-  position: relative;
-  width: 30%;
+.form {
+  display: flex;
+  gap: 1.5em;
+  width: 100%;
   height: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
 
-  input {
+  .container {
+    position: relative;
+    width: 30%;
     height: 100%;
-    width: 100%;
-    padding: 0.7em 0.5em;
-    border-radius: 5px;
-    border-color: $shadow-gray;
-    box-shadow: $shadow;
 
-    &:focus {
-      outline: 0;
-      outline-offset: 0;
+    input {
+      height: 100%;
+      width: 100%;
+      padding: 0.7em 0.5em;
+      border-radius: 5px;
+      border-color: $shadow-gray;
+      box-shadow: $shadow;
+
+      &:focus {
+        outline: 0;
+        outline-offset: 0;
+      }
     }
   }
 }
