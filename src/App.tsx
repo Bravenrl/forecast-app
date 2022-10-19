@@ -27,7 +27,7 @@ function App(): JSX.Element {
         <SearchButton />
       </AutocompleteWrap>
 
-      <Table />
+      <Table isLoaded={isLoaded} />
     </div>
   );
 }

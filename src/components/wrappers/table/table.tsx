@@ -1,18 +1,12 @@
 import Card from '../../ui/card/card';
 import styles from './table.module.scss';
 
-type TableProps = {};
+type TableProps = {
+  isLoaded: boolean;
+};
 
-function Table({}: TableProps): JSX.Element {
-  return (
-    <div className={styles.table}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </div>
-  );
+function Table({ isLoaded }: TableProps): JSX.Element {
+  return <div className={styles.table}>{isLoaded && <Card />}</div>;
 }
 
 export default Table;

@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/google.maps": "3.50.4",
+    "@types/react-geocode": "0.2.1",
     "@types/react-places-autocomplete": "7.2.9",
     "classnames": "2.3.2"
   }

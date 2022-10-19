@@ -9,6 +9,7 @@ type ListItemFetchProps = {
 
 function ListItemFetch({
   suggestion: {
+    place_id,
     structured_formatting: { main_text, secondary_text },
   },
   handleClick,
@@ -30,9 +31,9 @@ function ListItemFetch({
       tabIndex={0}
       onClick={() =>
         handleClick({
+          placeId:  place_id,
           name: main_text,
           country: data.sys.country,
-          coord: data.coord,
           metric: 'metric',
         })
       }

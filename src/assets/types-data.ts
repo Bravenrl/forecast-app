@@ -1,6 +1,6 @@
 import { Langs } from './const';
 
-export type LangsType = typeof Langs;
+export type LangsType = keyof typeof Langs;
 
 export type Metric = 'standard' | 'metric';
 
@@ -10,10 +10,10 @@ export type Coord = {
 };
 
 export type City = {
-  coord: Coord;
   name: string;
-  country: string,
+  country: string;
   metric: Metric;
+  placeId: string;
 };
 
 export type WeatherIcon = {
