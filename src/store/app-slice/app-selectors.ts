@@ -1,9 +1,9 @@
 import { Reducer } from '../../assets/const';
-import { City } from '../../assets/types-data';
+import { City, LangsType } from '../../assets/types-data';
 import { TypeRootState } from '../root-reducer';
 
-export const getCity = (state: TypeRootState): City[] | [] =>
+export const getCities = (state: TypeRootState): City[] | [] =>
   state[Reducer.App].cities;
 
-export const getLang = (state: TypeRootState): string =>
+export const getLang = (state: TypeRootState): LangsType =>
   state[Reducer.App].lang;

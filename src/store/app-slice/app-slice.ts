@@ -9,7 +9,7 @@ import {
 
 const initialState: InitialState = {
   cities: getCityLocalStorage(),
-  lang: 'us',
+  lang: 'en',
 };
 
 export const appSlice = createSlice({

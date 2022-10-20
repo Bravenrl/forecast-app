@@ -2,7 +2,7 @@ import { Langs } from './const';
 
 export type LangsType = keyof typeof Langs;
 
-export type Metric = 'standard' | 'metric';
+export type Units = 'standard' | 'metric';
 
 export type Coord = {
   lon: number;
@@ -12,7 +12,7 @@ export type Coord = {
 export type City = {
   name: string;
   country: string;
-  metric: Metric;
+  metric: Units;
   placeId: string;
 };
 
@@ -21,17 +21,6 @@ export type WeatherIcon = {
   main: string;
   description: string;
   icon: string;
-};
-
-export type MainInfo = {
-  temp: number;
-  feels_like: number;
-  temp_min: number;
-  temp_max: number;
-  pressure: number;
-  humidity: number;
-  sea_level: number;
-  grnd_level: number;
 };
 
 export type Wind = {
@@ -56,21 +45,16 @@ export type Feel = {
   morn: number;
 };
 
-export type DayForecast = {
-  dt: number;
-  sunrise: number;
-  sunset: number;
-  temp: Temp;
-  feels_like: Feel;
+export type MainInfo = {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
   pressure: number;
   humidity: number;
-  weather: WeatherIcon[];
-  speed: number;
-  deg: number;
-  gust: number;
-  clouds: number;
-  pop: number;
-  rain: number;
+  sea_level: number;
+  grnd_level: number;
+  temp_kf: number;
 };
 
 export type CurrentWeatherData = {
@@ -106,11 +90,28 @@ export type ForecastData = {
     name: string;
     coord: Coord;
     country: string;
-    population: 4593;
-    timezone: 7200;
+    population: number;
+    timezone: number;
+    sunrise: number;
+    sunset: number;
   };
   cod: string;
   message: number;
   cnt: number;
   list: DayForecast[];
+};
+
+export type ChartData = {
+  date: string;
+  temp: number;
+};
+
+export type DayForecast = {
+  dt: number;
+  wind: Wind;
+  weather: WeatherIcon[];
+  clouds: number;
+  pop: number;
+  visibility: number;
+  main: MainInfo;
 };

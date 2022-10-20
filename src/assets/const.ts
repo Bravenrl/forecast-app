@@ -1,7 +1,7 @@
 export const Langs = {
   ru: 'ru',
-  ua: 'ua',
-  us: 'us',
+  uk: 'uk',
+  en: 'en',
 };
 
 export const maxAutocomplete = 3;
