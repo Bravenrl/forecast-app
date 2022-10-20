@@ -1,0 +1,23 @@
+.container {
+  .figure {
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding-top: 0.3em;
+    padding-bottom: 0.2em;
+    padding-right: 4em;
+    min-width: 7.5em;
+    position: relative;
+
+    & > span {
+      font-size: 3em;
+    }
+  }
+
+  .feel {
+    opacity: 0.4;
+    gisplay: flex;
+    &>span {
+      margin-left: 0.2em;
+    }
+  }
+}

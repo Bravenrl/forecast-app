@@ -1,9 +1,7 @@
-import { render } from '@testing-library/react';
-import { format } from 'path';
+
 import {
   Area,
   AreaChart,
-  Label,
   LabelList,
   ResponsiveContainer,
   XAxis,
@@ -13,16 +11,21 @@ import styles from './forecast-aria-chart.module.scss';
 
 type ForecastAriaChartProps = {
   chartData: ChartData[];
+  isAbove: boolean;
 };
 
-function ForecastAriaChart({ chartData }: ForecastAriaChartProps): JSX.Element {
+function ForecastAriaChart({
+  chartData,
+  isAbove,
+}: ForecastAriaChartProps): JSX.Element {
   const temps = chartData.map((item) => item.temp);
-  const minTemp = Math.max(...temps);
+  const minTemp = Math.min(...temps);
+  console.log(minTemp)
   const newData = [{ temp: minTemp / 2 }, ...chartData, { temp: minTemp / 2 }];
 
   return (
     <ResponsiveContainer width='100%' height={110} className={styles.container}>
-      <AreaChart data={newData} margin={{ left: 10, right: 10, top: 30 }}>
+      <AreaChart data={newData} margin={{top: 30 }}>
         <defs>
           <linearGradient id='colorHeat' x1='0' y1='0' x2='0' y2='1'>
             <stop offset='5%' stopColor='#8884d8' stopOpacity={0.8} />

@@ -34,7 +34,7 @@ function ListItemFetch({
           placeId:  place_id,
           name: main_text,
           country: data.sys.country,
-          metric: 'metric',
+          unit: 'metric',
         })
       }
     >{`${main_text} | ${data.sys.country}`}</li>

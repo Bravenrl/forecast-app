@@ -2,7 +2,7 @@ import { Langs } from './const';
 
 export type LangsType = keyof typeof Langs;
 
-export type Units = 'standard' | 'metric';
+export type Unit = 'standard' | 'metric' | 'imperial';
 
 export type Coord = {
   lon: number;
@@ -12,7 +12,7 @@ export type Coord = {
 export type City = {
   name: string;
   country: string;
-  metric: Units;
+  unit: Unit;
   placeId: string;
 };
 

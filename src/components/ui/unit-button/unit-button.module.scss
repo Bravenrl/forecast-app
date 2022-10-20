@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  width: 4em;
+  justify-content: space-around;
+  align-self: baseline;
+  position: absolute;
+  top:0;
+  right:0;
+
+  &::after {
+    display: block;
+    content: '';
+    height: auto;
+    width: 2px;
+    background-color: #000;
+    order: 1;
+    margin: 3px 0;
+  }
+
+  & > button {
+    font-size: 1.3em;
+    border: none;
+    background-color: transparent;
+    opacity: 0.4;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+
+    &:first-child {
+      order:0;
+    }
+
+
+    &:last-child {
+      order:2
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}

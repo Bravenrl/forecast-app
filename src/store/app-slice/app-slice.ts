@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Slice } from '../../assets/const';
-import { City, LangsType } from '../../assets/types-data';
+import { City, LangsType, Unit } from '../../assets/types-data';
 import { InitialState } from '../../assets/types-store';
 import {
   getCityLocalStorage,
@@ -27,10 +27,13 @@ export const appSlice = createSlice({
       state.cities = [...state.cities, payload];
       setCityLocalStorage(state.cities);
     },
-    changeCityMetric: (state, { payload }: PayloadAction<City>) => {
+    changeCityUnit: (
+      state,
+      { payload }: PayloadAction<{ placeId: string; unit: Unit }>
+    ) => {
       state.cities = state.cities.map((city) =>
         city.placeId === payload.placeId
-          ? { ...city, metric: payload.metric }
+          ? { ...city, unit: payload.unit }
           : city
       );
       setCityLocalStorage(state.cities);
@@ -38,4 +41,7 @@ export const appSlice = createSlice({
   },
 });
 
-export const { reducer: appReducer, actions: {changeCityMetric, changeLang, addCity} } = appSlice;
+export const {
+  reducer: appReducer,
+  actions: { changeCityUnit, changeLang, addCity },
+} = appSlice;
