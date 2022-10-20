@@ -1,6 +1,4 @@
-import {
-  City,
-} from '../../../assets/types-data';
+import { City } from '../../../assets/types-data';
 import styles from './card.module.scss';
 import { useSelector } from 'react-redux';
 import { getLang } from '../../../store/app-slice/app-selectors';
@@ -12,6 +10,7 @@ import { getIsAbove } from '../../../utils/data-utils';
 import DegreeFigure from '../degree-figure/degree-figure';
 import WeatherParams from '../weather-params/weather-params';
 import CardTitle from './card-title/card-title';
+import CardIcon from '../card-icon/card-icon';
 
 type CardProps = {
   city: City;
@@ -31,7 +30,13 @@ function Card({ city }: CardProps): JSX.Element | null {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <CardTitle cityName={cityName} country={city.country} date={weather.dt} lang={lang}/>
+        <CardTitle
+          cityName={cityName}
+          country={city.country}
+          date={weather.dt}
+          lang={lang}
+        />
+        <CardIcon data={weather.weather} />
       </div>
       <ForecastAriaChart chartData={chartData} isAbove={isAbove} />
       {weather && (
