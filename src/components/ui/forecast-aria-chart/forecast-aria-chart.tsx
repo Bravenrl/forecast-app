@@ -19,7 +19,6 @@ function ForecastAriaChart({
 }: ForecastAriaChartProps): JSX.Element {
   const temps = chartData.map((item) => item.temp);
   const minTemp = Math.min(...temps);
-  console.log(minTemp)
   const newData = [{ temp: minTemp / 2 }, ...chartData, { temp: minTemp / 2 }];
 
   return (

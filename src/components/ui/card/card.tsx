@@ -11,6 +11,7 @@ import { memo } from 'react';
 import { getIsAbove } from '../../../utils/data-utils';
 import DegreeFigure from '../degree-figure/degree-figure';
 import WeatherParams from '../weather-params/weather-params';
+import CardTitle from './card-title/card-title';
 
 type CardProps = {
   city: City;
@@ -29,7 +30,9 @@ function Card({ city }: CardProps): JSX.Element | null {
 
   return (
     <div className={styles.card}>
-      {cityName}
+      <div className={styles.header}>
+        <CardTitle cityName={cityName} country={city.country} date={weather.dt} lang={lang}/>
+      </div>
       <ForecastAriaChart chartData={chartData} isAbove={isAbove} />
       {weather && (
         <div className={styles.weather}>

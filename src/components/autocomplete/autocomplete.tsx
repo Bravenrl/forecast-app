@@ -46,7 +46,6 @@ const PlacesAutocomplete = ({
   };
 
   const submitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-    console.log('object');
     e.preventDefault();
     if (currentCity) {
       dispatch(addCity(currentCity));
