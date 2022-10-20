@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { City } from '../../../assets/types-data';
 import { getTempSign } from '../../../utils/data-utils';
 import UnitButton from '../unit-button/unit-button';
@@ -21,8 +20,10 @@ function DegreeFigure({ temp, feel, city }: DegreeFigureProps): JSX.Element {
       </div>
       <div className={styles.feel}>
         <span>Feels like:</span>
-        <span>{currentFeel}</span>
-        {city.unit==='metric' ? <span>&deg;С</span> : <span>&deg;F</span>}
+        <span>
+          <b>{currentFeel}</b>
+        </span>
+        <span> {city.unit === 'metric' ? <b>&deg;С</b> : <b>&deg;F</b>} </span>
       </div>
     </div>
   );

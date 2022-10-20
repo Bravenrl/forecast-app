@@ -1,0 +1,24 @@
+@import '/src/assets/style/vars.scss';
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  .param {
+    padding-top: 0.3em;
+    text-align: end;
+
+    span {
+      margin-left: 0.2em;
+
+      &.above {
+        color: $warm-orange;
+      }
+
+      &.below {
+        color: $cold-blue;
+      }
+    }
+  }
+}

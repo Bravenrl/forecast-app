@@ -1,19 +1,16 @@
 import {
   City,
-  CurrentWeatherData,
-  ForecastData,
 } from '../../../assets/types-data';
 import styles from './card.module.scss';
-import { getGeocode } from 'use-places-autocomplete';
 import { useSelector } from 'react-redux';
 import { getLang } from '../../../store/app-slice/app-selectors';
 import { useWeather } from '../../../hooks/use-weather';
 import { useNameTranslate } from '../../../hooks/use-name-translate';
 import ForecastAriaChart from '../forecast-aria-chart/forecast-aria-chart';
-import UnitButton from '../unit-button/unit-button';
 import { memo } from 'react';
 import { getIsAbove } from '../../../utils/data-utils';
 import DegreeFigure from '../degree-figure/degree-figure';
+import WeatherParams from '../weather-params/weather-params';
 
 type CardProps = {
   city: City;
@@ -34,7 +31,12 @@ function Card({ city }: CardProps): JSX.Element | null {
     <div className={styles.card}>
       {cityName}
       <ForecastAriaChart chartData={chartData} isAbove={isAbove} />
-      {weather && <DegreeFigure temp={mainTemp} feel={feelTemp} city={city} />}
+      {weather && (
+        <div className={styles.weather}>
+          <DegreeFigure temp={mainTemp} feel={feelTemp} city={city} />
+          <WeatherParams unit={city.unit} data={weather} isAbove={isAbove} />
+        </div>
+      )}
     </div>
   );
 }

@@ -5,6 +5,11 @@
     flex: 0 0 auto;
     border-color: $shadow-gray;
     box-shadow: $shadow;
-    padding: 0.5em;
+    padding: 1em;
     border-radius: 10px;
+    
+    .weather {
+        display: flex;
+        justify-content: space-between;
+    }
 }
