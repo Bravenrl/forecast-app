@@ -1,31 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Slice } from '../../assets/const';
-import { City, LangsType, Unit } from '../../assets/types-data';
-import { InitialState } from '../../assets/types-store';
-import {
-  getCityLocalStorage,
-  setCityLocalStorage,
-} from '../../utils/local-storage';
+import { City, Unit } from '../../assets/types-data';
 
-const initialState: InitialState = {
-  cities: getCityLocalStorage(),
-  lang: 'en',
+const initialState: { cities: City[] } = {
+  cities: [],
 };
 
-export const appSlice = createSlice({
-  name: Slice.App,
+export const dataSlice = createSlice({
+  name: Slice.Data,
   initialState,
   reducers: {
-    changeLang: (state, { payload }: PayloadAction<LangsType>) => {
-      state.lang = payload;
-    },
     addCity: (state, { payload }: PayloadAction<City>) => {
       if (state.cities.find((el) => el.placeId === payload.placeId)) {
         return;
       }
 
       state.cities = [...state.cities, payload];
-      setCityLocalStorage(state.cities);
     },
     changeCityUnit: (
       state,
@@ -36,16 +26,14 @@ export const appSlice = createSlice({
           ? { ...city, unit: payload.unit }
           : city
       );
-      setCityLocalStorage(state.cities);
     },
     removeCity: (state, { payload }: PayloadAction<string>) => {
       state.cities = state.cities.filter((city) => city.placeId !== payload);
-      setCityLocalStorage(state.cities);
     },
   },
 });
 
 export const {
-  reducer: appReducer,
-  actions: { changeCityUnit, changeLang, addCity, removeCity },
-} = appSlice;
+  reducer: dataReducer,
+  actions: { changeCityUnit, addCity, removeCity },
+} = dataSlice;

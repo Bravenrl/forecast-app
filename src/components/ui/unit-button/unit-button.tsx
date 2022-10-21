@@ -2,7 +2,7 @@ import { City, Unit } from '../../../assets/types-data';
 import styles from './unit-button.module.scss';
 import cx from 'classnames';
 import { useDispatch } from 'react-redux';
-import { changeCityUnit } from '../../../store/app-slice/app-slice';
+import { changeCityUnit } from '../../../store/slices/data-slice';
 
 type UnitButtonProps = {
   city: City;

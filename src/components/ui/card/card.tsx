@@ -1,7 +1,7 @@
 import { City } from '../../../assets/types-data';
 import styles from './card.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLang } from '../../../store/app-slice/app-selectors';
+import { getLang } from '../../../store/slices/selectors';
 import { useWeather } from '../../../hooks/use-weather';
 import { useNameTranslate } from '../../../hooks/use-name-translate';
 import ForecastAriaChart from '../forecast-aria-chart/forecast-aria-chart';
@@ -12,7 +12,7 @@ import WeatherParams from '../weather-params/weather-params';
 import CardTitle from './card-title/card-title';
 import CardIcon from '../card-icon/card-icon';
 import { VscClose } from 'react-icons/vsc';
-import { removeCity } from '../../../store/app-slice/app-slice';
+import { removeCity } from '../../../store/slices/data-slice';
 import cx from 'classnames';
 
 type CardProps = {

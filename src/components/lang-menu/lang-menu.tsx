@@ -8,10 +8,10 @@ import ListItem from '../ui/list/list-item/list-item';
 import cx from 'classnames';
 import { useOutsideClick } from '../../hooks/use-outside-click';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLang } from '../../store/app-slice/app-selectors';
-import { changeLang } from '../../store/app-slice/app-slice';
+import { getLang } from '../../store/slices/selectors';
 import { LangsType } from '../../assets/types-data';
 import { useTranslation } from 'react-i18next';
+import { changeLang } from '../../store/slices/app-slice';
 
 function LangMenu(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);

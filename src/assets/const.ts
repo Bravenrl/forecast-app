@@ -8,10 +8,12 @@ export const maxAutocomplete = 3;
 
 export enum Reducer {
   App = 'App',
+  Data = 'Data',
 }
 
 export enum Slice {
   App = 'App',
+  Data = 'Data'
 }
 
 export const googleMapsApiKey = process.env.REACT_APP_API_KEY ?? '';

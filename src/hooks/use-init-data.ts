@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getGeocode } from 'use-places-autocomplete';
 import { City, Coord } from '../assets/types-data';
-import { getCities, getLang } from '../store/app-slice/app-selectors';
+import { getCities, getLang } from '../store/slices/selectors';
 import { geoBrowserLocation } from '../utils/geolocation';
 
 export const useInitData = () => {

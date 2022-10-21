@@ -6,7 +6,7 @@ import ListItemFetch from '../ui/list/list-item-fetch/list-item-fetch';
 import SearchButton from '../ui/search-button/search-button';
 import styles from './autocomplete.module.scss';
 import { useDispatch } from 'react-redux';
-import { addCity } from '../../store/app-slice/app-slice';
+import { addCity } from '../../store/slices/data-slice';
 import { useTranslation } from 'react-i18next';
 
 type PlacesAutocompleteProps = {
