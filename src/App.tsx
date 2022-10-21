@@ -7,8 +7,6 @@ import AutocompleteWrap from './components/wrappers/autocomplete-wrap/autocomple
 import { googleMapsApiKey } from './assets/const';
 
 function App(): JSX.Element {
-
-
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey,
@@ -24,7 +22,7 @@ function App(): JSX.Element {
 
       <AutocompleteWrap isLoaded={isLoaded} />
 
-      <Table isLoaded={isLoaded} />
+      {isLoaded && <Table />}
     </div>
   );
 }

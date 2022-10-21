@@ -1,6 +1,6 @@
 import { Coord } from '../assets/types-data';
 
-export const geoBrowserLocation = (): Promise<Coord> => {
+export const getBrowserLocation = (): Promise<Coord> => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
