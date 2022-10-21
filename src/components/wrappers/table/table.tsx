@@ -6,8 +6,8 @@ function Table(): JSX.Element {
   const data = useInitData();
   return (
     <div className={styles.table}>
-      {data.map((city) => (
-        <Card key={city.placeId} city={city} />
+      {data.map((city, index) => (
+        <Card key={city.placeId+index} city={city} />
       ))}
     </div>
   );
