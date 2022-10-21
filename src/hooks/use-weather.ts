@@ -11,14 +11,18 @@ import { getChartData } from '../utils/data-utils';
 export const useWeather = (city: City, lang: LangsType) => {
   const [weather, setWeather] = useState<CurrentWeatherData | null>(null);
   const [chartData, setChartData] = useState<ChartData[] | []>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     getWeather(city.name, lang, city.unit)
       .then(({ data }) => {
         setWeather(data);
-        console.log(data);
       })
-      .catch(() => setWeather(null));
+      .catch(() => setWeather(null))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [city, lang]);
 
   useEffect(() => {
@@ -33,5 +37,6 @@ export const useWeather = (city: City, lang: LangsType) => {
   return {
     chartData,
     weather,
+    isLoading,
   };
 };

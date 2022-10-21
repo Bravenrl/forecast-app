@@ -19,19 +19,23 @@ function ForecastAriaChart({
 }: ForecastAriaChartProps): JSX.Element {
   const temps = chartData.map((item) => item.temp);
   const minTemp = Math.min(...temps);
-  const newData = [{ temp: minTemp / 2 }, ...chartData, { temp: minTemp / 2 }];
+  const newData = [
+    { temp: isAbove ? minTemp / 2 : minTemp * 2 },
+    ...chartData,
+    { temp: isAbove ? minTemp / 2 : minTemp * 2 },
+  ];
 
   return (
     <ResponsiveContainer width='100%' height={110} className={styles.container}>
-      <AreaChart data={newData} margin={{top: 30 }}>
+      <AreaChart data={newData} margin={{ top: 30 }}>
         <defs>
-          <linearGradient id='colorHeat' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor='#8884d8' stopOpacity={0.8} />
-            <stop offset='95%' stopColor='#8884d8' stopOpacity={0} />
+          <linearGradient id='colorWarm' x1='0' y1='0' x2='0' y2='1'>
+            <stop offset='5%' stopColor='#ffa25b' stopOpacity={0.8} />
+            <stop offset='95%' stopColor='#ffa25b' stopOpacity={0} />
           </linearGradient>
           <linearGradient id='colorCold' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor='#82ca9d' stopOpacity={0.8} />
-            <stop offset='95%' stopColor='#82ca9d' stopOpacity={0} />
+            <stop offset='5%' stopColor='#459de9' stopOpacity={0.8} />
+            <stop offset='95%' stopColor='#459de9' stopOpacity={0} />
           </linearGradient>
         </defs>
         <XAxis
@@ -43,10 +47,11 @@ function ForecastAriaChart({
           tickMargin={-5}
         />
         <Area
+          className={styles.area}
           type='natural'
           dataKey='temp'
-          stroke='#82ca9d'
-          fill='url(#colorCold)'
+          stroke={`${isAbove ? 'transparent' : '#459de9'}`}
+          fill={`${isAbove ? 'url(#colorWarm)' : 'url(#colorCold)'}`}
           isAnimationActive={false}
         >
           <LabelList

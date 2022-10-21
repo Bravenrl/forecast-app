@@ -38,10 +38,14 @@ export const appSlice = createSlice({
       );
       setCityLocalStorage(state.cities);
     },
+    removeCity: (state, { payload }: PayloadAction<string>) => {
+      state.cities = state.cities.filter((city) => city.placeId !== payload);
+      setCityLocalStorage(state.cities);
+    },
   },
 });
 
 export const {
   reducer: appReducer,
-  actions: { changeCityUnit, changeLang, addCity },
+  actions: { changeCityUnit, changeLang, addCity, removeCity },
 } = appSlice;

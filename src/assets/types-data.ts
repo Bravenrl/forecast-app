@@ -5,7 +5,7 @@ export type LangsType = keyof typeof Langs;
 export type Unit = 'standard' | 'metric' | 'imperial';
 
 export type Coord = {
-  lon: number;
+  lng: number;
   lat: number;
 };
 

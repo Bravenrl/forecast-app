@@ -22,12 +22,6 @@ export const getIsAbove = (temp: number, unit: Unit): boolean => {
   return temp > 0;
 };
 
-export const getTempSign = (temp: number, unit: Unit): string => {
-  if (temp > 0 && unit === 'metric') return `+${temp}`;
-  if (temp < 0) return `-${temp}`;
-  return `${temp}`;
-};
-
 export const getLocaleDate = (date: number, lang: LangsType) => {
   const now = new Date(date * 1000);
   const dateOptions: Intl.DateTimeFormatOptions = {

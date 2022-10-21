@@ -7,6 +7,7 @@ import SearchButton from '../ui/search-button/search-button';
 import styles from './autocomplete.module.scss';
 import { useDispatch } from 'react-redux';
 import { addCity } from '../../store/app-slice/app-slice';
+import { useTranslation } from 'react-i18next';
 
 type PlacesAutocompleteProps = {
   isLoaded: boolean;
@@ -17,7 +18,7 @@ const PlacesAutocomplete = ({
 }: PlacesAutocompleteProps): JSX.Element => {
   const dispatch = useDispatch();
   const [currentCity, setCurrentCity] = useState<City | null>(null);
-
+   const {t} = useTranslation();
   const {
     ready,
     value,
@@ -65,7 +66,7 @@ const PlacesAutocomplete = ({
           value={value}
           onChange={handleInput}
           disabled={!ready}
-          placeholder='Choose city from list'
+          placeholder={t('choose city')}
         />
         {status === 'OK' && (
           <List>

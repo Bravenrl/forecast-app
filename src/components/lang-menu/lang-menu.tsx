@@ -11,15 +11,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLang } from '../../store/app-slice/app-selectors';
 import { changeLang } from '../../store/app-slice/app-slice';
 import { LangsType } from '../../assets/types-data';
+import { useTranslation } from 'react-i18next';
 
 function LangMenu(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useOutsideClick<HTMLDivElement>(() => setIsOpen(false));
   const lang = useSelector(getLang);
   const dispatch = useDispatch();
+  const {i18n} = useTranslation();
+
 
   const handleClick = (item: LangsType) => {
     setIsOpen(false);
+    i18n.changeLanguage(item)
     dispatch(changeLang(item));
   };
   return (

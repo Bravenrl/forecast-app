@@ -1,3 +1,4 @@
+import { ReactI18NextChild, useTranslation } from 'react-i18next';
 import styles from './search-button.module.scss';
 
 type SearchButtonProps = {
@@ -6,9 +7,12 @@ type SearchButtonProps = {
 };
 
 function SearchButton({ type, disabled }: SearchButtonProps): JSX.Element {
+
+  const {t} = useTranslation('translation')
+
   return (
     <button disabled={disabled} type={type} className={styles.button}>
-      add
+      <span>{t('add') as ReactI18NextChild}</span>
     </button>
   );
 }

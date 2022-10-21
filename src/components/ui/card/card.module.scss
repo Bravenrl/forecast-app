@@ -7,6 +7,34 @@
   box-shadow: $shadow;
   padding: 1em;
   border-radius: 10px;
+  position: relative;
+
+  &.cold {
+    background-color: $cold-background;
+  }
+
+  &.warm {
+    background-color: $warm-background;
+  }
+
+  .remove {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    offset: none;
+    top: 0.2em;
+    right: 0.2em;
+    cursor: pointer;
+    opacity: 0.4;
+
+    &:hover {
+      opacity: 1;
+    }
+    &:active {
+      opacity: 0.2;
+    }
+  }
 
   .header {
     display: flex;

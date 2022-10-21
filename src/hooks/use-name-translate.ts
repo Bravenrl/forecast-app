@@ -11,7 +11,7 @@ export const useNameTranslate = (city: City, lang: LangsType) => {
     };
     getGeocode(parameter)
       .then((results) => {
-        setCityName(results[0].address_components[1].short_name);
+        setCityName(results[0].address_components[0].short_name);
       })
       .catch(() => {
         setCityName(city.name);

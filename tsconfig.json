@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "src/components/autocomplete/autocomplete.tsx", "src/components/autocomplete/,autocomplete.tsx"  ]
+, "src/components/autocomplete/autocomplete.tsx", "src/components/autocomplete/,autocomplete.tsx", "@types/react-i18next/react-i18next.d.ts"  ]
 }

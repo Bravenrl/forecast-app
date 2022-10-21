@@ -1,7 +1,8 @@
+import { weatherApiKey } from '../assets/const';
 import { CurrentWeatherData, ForecastData, LangsType, Unit } from '../assets/types-data';
 import { api } from './api';
 
-export const weatherApiKey = process.env.REACT_APP_WEATHER_KEY ?? '';
+
 
 export const getForecast = async (
   city: string,
