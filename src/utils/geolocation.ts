@@ -5,12 +5,13 @@ export const getBrowserLocation = (): Promise<Coord> => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude: lat, longitude: lng } = position.coords;
+        console.log(lat, lng);
         resolve({ lat, lng } as Coord);
       },
-      () => {
-        reject(null);
+      (e) => {
+        reject(e)
       },
-      { enableHighAccuracy: true, timeout: 3000 }
+      { enableHighAccuracy: true, timeout: 30000 }
     );
   });
 };
